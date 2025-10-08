@@ -21,9 +21,13 @@ jobs:
         run: npm install
 
       - name: Generate drizzle config
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: npx drizzle-kit generate
       
       - name: Push database migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run : npx drizzle-kit push
 
       - name: Build
