@@ -5,7 +5,11 @@ export default defineConfig({
     out: "./drizzle/migrations",
 
     dialect: "postgresql",
+
     dbCredentials: {
         url: process.env.DATABASE_URL!,
+        ssl: {
+            rejectUnauthorized: false, // 👈 ignore self-signed certificate
+        },
     },
 });
