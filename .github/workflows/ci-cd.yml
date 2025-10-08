@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+  branches: [dev, main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate drizzle config
+        run: npx drizzle-kit generate
+      
+      - name: Push database migrations
+        run : npx drizzle-kit push
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Tests
+        env:
+          DATABASE_URL: ${{secrets.DATABASE_URL}}
+        run: npm run test
+
+      - name: Deploy to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+        run: |
+          curl -X POST "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys" \
+          -H "accept: application/json" \
+          -H "authorization: Bearer $RENDER_API_KEY" \
+          -H "content-type: application/json" \
+          -d '{}'
+
+          staging rnd_TbwUF6CQCloAxCy60Hp7HSFadrxu
+          
+          serviceid srv-d3im1gali9vc73euo84g

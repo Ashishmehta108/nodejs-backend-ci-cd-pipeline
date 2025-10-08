@@ -1,0 +1,36 @@
+// {
+//   "compilerOptions": {
+    
+//     "target": "ES2020",
+//     "module": "es2022", // Use CommonJS for simpler Node execution
+//     "outDir": "dist",
+//     "rootDir": ".", // Strip src/ from dist/
+//     "esModuleInterop": true,
+//     "strict": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "allowJs": true
+//   },
+//   "include": [
+//     "src",
+//     "tests"
+//   ]
+// }
+
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",       // Changed from es2022 → Node can run directly, Jest works
+    "outDir": "dist",
+    "rootDir": ".",             // Keep rootDir as project root to include src + tests
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true
+  },
+  "include": [
+    "src",
+    "tests"
+  ]
+}
