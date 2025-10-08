@@ -8,7 +8,7 @@ async function seed() {
   await db.insert(users).values([
     { name: "Ashish", email: "ashish@example.com" },
     { name: "John Doe", email: "john@example.com" },
-  ]);
+  ]); 
   console.log("✅ Seed completed!");
   process.exit(0);
 }
