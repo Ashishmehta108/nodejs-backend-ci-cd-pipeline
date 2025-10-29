@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_URL: ${{ secrets.POOLER_URL }}
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
 
@@ -27,11 +27,6 @@ jobs:
       - name: Generate drizzle config
         run: npx drizzle-kit generate
 
-      - name: Debug DB host
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: |
-          echo "Database host: $(echo $DATABASE_URL | sed -E 's#.*@([^:/]+).*#\1#')"
 
       - name: Push database migrations
         run: npx drizzle-kit push
