@@ -25,6 +25,11 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: npx drizzle-kit generate
+
+      - name: Debug DB host
+        run: |
+          echo "Database host: $(echo $DATABASE_URL | sed -E 's#.*@([^:/]+).*#\1#')"
+
       
       - name: Push database migrations
         env:
