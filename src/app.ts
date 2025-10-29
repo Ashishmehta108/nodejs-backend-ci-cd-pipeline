@@ -4,7 +4,6 @@ import { users } from "./db/schema";
 import { eq } from "drizzle-orm";
 import morgan from "morgan"
 
-
 const app = express();
 app.use(morgan("combined"))
 app.use(express.json());

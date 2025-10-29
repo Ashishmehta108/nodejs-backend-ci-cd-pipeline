@@ -18,7 +18,7 @@ describe("Drizzle API Tests", () => {
         const res = await request(app)
             .post("/users")
             .send({ name: "Ashish12", email: "ashishm12356@example.com" });
-        expect(res.statusCode).toBe(201);
+        expect(res.statusCode).toBe(201); 
         expect(res.body.email).toBe("ashishm12356@example.com");
     });
 });

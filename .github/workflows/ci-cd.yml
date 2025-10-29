@@ -49,7 +49,3 @@ jobs:
           -H "authorization: Bearer $RENDER_API_KEY" \
           -H "content-type: application/json" \
           -d '{}'
-
-          staging rnd_TbwUF6CQCloAxCy60Hp7HSFadrxu
-          
-          serviceid srv-d3im1gali9vc73euo84g
