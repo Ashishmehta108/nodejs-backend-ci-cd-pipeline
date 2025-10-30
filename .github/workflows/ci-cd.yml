@@ -27,7 +27,6 @@ jobs:
       - name: Generate drizzle config
         run: npx drizzle-kit generate
 
-
       - name: Push database migrations
         run: npx drizzle-kit push
 

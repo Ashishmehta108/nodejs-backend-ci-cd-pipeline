@@ -5,9 +5,6 @@ import { users } from "../db/schema";
 import { randomString } from "../randomString";
 
 
-beforeAll(async () => {
-    await db.delete(users)
-})
 
 describe("Drizzle API Tests", () => {
     it("should return welcome message", async () => {
